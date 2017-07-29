@@ -13,34 +13,30 @@ function displayData() {
 }
 
 let populationData;
-let selectedPopulationData;
+let selectedSuburb;
 
-(function getData() {
+(function getSuburbs() {
 
-    $.get('/population_extract.csv', function(data) {
-        // $(".result").html(data);
-        // console.log("Population data: " + data);
-        populationData = $.csv.toArrays(data);
-        // console.log("Population data: " + populationData);
-        initSuburbsDropdown(populationData);
+    $.get(apiUrl + '/getSuburbs', function(data) {
+        initSuburbsDropdown(data);
     });
 
     function initSuburbsDropdown(popData) {
+        populationData = popData;
+        let buttons = '';
         for (var i = 1; i < popData.length; i++) {
-            var button = createSuburbButton(popData[i][3], i);
-            $('.suburb-dropdown .dropdown-menu').append(button);
+            buttons = buttons + createSuburbButton(popData[i], i);
         }
+        $('.suburb-dropdown .dropdown-menu').append(buttons);
 
         // Replace the text from the Dropdown when select an item
         $(".suburb-dropdown .dropdown-menu button").click(function() {
             $(".suburb-dropdown .btn:first-child").text($(this).text());
             $(".suburb-dropdown .btn:first-child").val($(this).text());
-            selectedPopulationData = populationData[$(arguments[0].target).data('index')];
-            console.log(selectedPopulationData);
-
+            selectedSuburb = populationData[$(arguments[0].target).data('index')];
             // update map
 
-           // updatemap(selectedPopulationData[0], selectedPopulationData[1]);
+            // updatemap(selectedPopulationData[0], selectedPopulationData[1]);
         });
     }
 
