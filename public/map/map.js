@@ -14,9 +14,9 @@ L.tileLayer.grayscale(hostMapBox, {
     accessToken: 'pk.eyJ1IjoiZGF0YXBvY2FseXBzZSIsImEiOiJjajVvbmp5eDIwMXZ6MzNxbWM1OHkxZDF2In0.pGgODeyy-u8IwlqXUHCYPg'
 }).addTo(mymap);
 
-$.getJSON("hospitals.geojson",function(data){
+$.getJSON("/map/hospitals.geojson",function(data){
     var iconHos = L.icon({
-    iconUrl: 'hospital.gif',
+    iconUrl: '/map/hospital.gif',
     iconSize: [30,30]
   }); 
   L.geoJson(data  ,{
@@ -26,9 +26,9 @@ $.getJSON("hospitals.geojson",function(data){
   }  ).addTo(mymap);
 });
 
-$.getJSON("waterpoints.geojson",function(data){
+$.getJSON("/map/waterpoints.geojson",function(data){
     var iconWater = L.icon({
-    iconUrl: 'water.png',
+    iconUrl: '/map/water.png',
     iconSize: [30,30]
   }); 
   L.geoJson(data  ,{
