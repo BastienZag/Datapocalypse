@@ -83,8 +83,7 @@ function getSurvivalData() {
 }
 
 function displayIndex(data) {
-    $('.survival-index-number').html(parseFloat(Math.round(data.index * 100) / 100).toFixed(2) + 'pt');
-    $('.survival-index').show();
+
     showHighchartData(data);
     $('.highchart').show();
 }
@@ -102,13 +101,18 @@ function showHighchartData(data) {
     }
 
     var emptyGauge = 100 - maxGauge;
-    chartData.push({
-        name: '',
-        y: emptyGauge,
-        dataLabels: {
-            enabled: false
-        }
-    });
+
+    // display title
+    $('.survival-index-number').html(parseFloat(Math.round(maxGauge * 100) / 100).toFixed(2) + '%');
+    $('.survival-index').show();
+
+    // chartData.push({
+    //     name: '',
+    //     y: emptyGauge,
+    //     dataLabels: {
+    //         enabled: false
+    //     }
+    // });
 
     console.log(chartData);
 
@@ -119,7 +123,7 @@ function showHighchartData(data) {
             plotShadow: false
         },
         title: {
-            text: 'Survival<br>index<br>' + parseFloat(Math.round(data.index * 100) / 100).toFixed(2),
+            text: 'Survival<br>index<br>',
             align: 'center',
             verticalAlign: 'middle',
             y: 40

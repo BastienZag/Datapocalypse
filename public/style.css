@@ -138,3 +138,7 @@ textarea {
         font-size: 90px;
     }
 }
+
+.jumbotron-heading {
+    padding-bottom: 30px;
+}
