@@ -62,8 +62,10 @@ textarea {
  .info {
 color:#fff;
 padding:20px;
-
 border-radius:3px;
+ display: flex;
+  display: -webkit-flex;
+  flex-wrap: wrap;
  }
 
 
@@ -79,7 +81,7 @@ border-radius:3px;
  }
 
  #earth>div{
-     background-color: #E4D836;
+     background-color: #1BC98E;
        color:#fff;
        padding: 20px;
  }
