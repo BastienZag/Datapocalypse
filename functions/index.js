@@ -51,15 +51,37 @@ exports.getSurvivalData = functions.https.onRequest((request, response) => {
         let index = selectedWeight[0] * suburbData.Density_Norm +
             selectedWeight[1] * suburbData.Earthquake_Norm +
             selectedWeight[2] * suburbData.Income_Norm +
+            selectedWeight[3] * ageBuckets[age] +
             selectedWeight[4] * suburbData.Hospital_Norm +
-            selectedWeight[5] * suburbData.Water_Norm +
-            ageBuckets[age];
+            selectedWeight[5] * suburbData.Water_Norm;
 
         survivalData = {
             index,
             suburb: suburbData,
             params: request.body
         };
+
+        survivalData.gauge = {};
+        if (selectedWeight[0]) {
+            survivalData.gauge.density = selectedWeight[0] * suburbData.Density_Norm;
+        }
+        if (selectedWeight[1]) {
+            survivalData.gauge.earthquake = selectedWeight[1] * suburbData.Earthquake_Norm;
+        }
+        if (selectedWeight[2]) {
+            survivalData.gauge.income = selectedWeight[2] * suburbData.Income_Norm;
+        }
+        if (selectedWeight[3]) {
+            survivalData.gauge.age = selectedWeight[3] * ageBuckets[age];
+        }
+        if (selectedWeight[4]) {
+            survivalData.gauge.hospital = selectedWeight[4] * suburbData.Hospital_Norm;
+        }
+        if (selectedWeight[5]) {
+            survivalData.gauge.water = selectedWeight[5] * suburbData.Water_Norm;
+        }
+
+        survivalData.weights = selectedWeight;
 
         response.status(200).json(survivalData);
     });
