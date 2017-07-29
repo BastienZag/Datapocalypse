@@ -37,3 +37,10 @@ $.getJSON("/map/waterpoints.geojson",function(data){
     }
   }  ).addTo(mymap);
 });
+
+var runIcon = L.icon({
+    iconUrl: '/map/run.png',
+    iconSize:     [40, 40], // size of the icon
+});
+
+L.marker([lat, lon], {icon: greenIcon}).addTo(map);
