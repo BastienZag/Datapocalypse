@@ -25,15 +25,6 @@ exports.getSurvivalData = functions.https.onRequest((request, response) => {
     const scenario = request.body.scenario;
     const suburbData = populationJSON[request.body.suburb.id];
 
-    // mock
-    suburbData.populationDensity = 0.2;
-    suburbData.earthquake = 0.3;
-    suburbData.income = 0.6;
-    suburbData.age = 0.2;
-    suburbData.hospitals = 0.5;
-    suburbData.water = 0.1;
-    // end of mock
-
     let survivalData;
     if (firebase.apps.length === 0) {
         firebase.initializeApp(config);
@@ -57,12 +48,11 @@ exports.getSurvivalData = functions.https.onRequest((request, response) => {
         };
 
         // calculate index
-        let index = selectedWeight[0] * suburbData.populationDensity +
-            selectedWeight[1] * suburbData.earthquake +
-            selectedWeight[2] * suburbData.income +
-            selectedWeight[3] * suburbData.age +
-            selectedWeight[4] * suburbData.hospitals +
-            selectedWeight[5] * suburbData.water +
+        let index = selectedWeight[0] * suburbData.Density_Norm +
+            selectedWeight[1] * suburbData.Earthquake_Norm +
+            selectedWeight[2] * suburbData.Income_Norm +
+            selectedWeight[4] * suburbData.Hospital_Norm +
+            selectedWeight[5] * suburbData.Water_Norm +
             ageBuckets[age];
 
         survivalData = {
