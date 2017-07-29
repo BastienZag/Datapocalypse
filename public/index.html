@@ -8,6 +8,7 @@
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
+<<<<<<< HEAD
     <link rel="stylesheet" href="mapStyle.css"</link>
 
     <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
@@ -18,6 +19,8 @@
 	<script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
 	
 
+=======
+>>>>>>> f1d1b21d3e7b71f17cb51ff062711e7fa6314aca
 </header>
 
 <body>
@@ -31,31 +34,35 @@
     <section class="jumbotron text-center">
         <div class="container">
             <h1 class="jumbotron-heading">Calculate your survival chance</h1>
-              <div class="row">&nbsp;</div>
-             <div class="row">&nbsp;</div>
-              <div class="row">&nbsp;</div>
-              <div class="row">
-            <div class="col-md-4">
-                Where do you live:
-                <div class="dropdown suburb-dropdown">
-
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <div class="row">&nbsp;</div>
+            <div class="row">&nbsp;</div>
+            <div class="row">&nbsp;</div>
+            <div class="row">
+                <div class="col-md-4 text-left">
+                    Where do you live:
+                    <div class="dropdown suburb-dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       Suburb
                     </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <button class="dropdown-item">1</button>
-                        <button class="dropdown-item">2</button>
-                        <button class="dropdown-item">3</button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <!--<button class="dropdown-item">1</button>
+                            <button class="dropdown-item">2</button>
+                            <button class="dropdown-item">3</button>-->
+                        </div>
                     </div>
-                </div>
-            
-            </div>
 
+                </div>
+
+<<<<<<< HEAD
              <div class="col-md-4"> <button class="btn btn-primary submit">Calculate your survival chance</button> </div>
              </div>
              <div class="col-md-4">
                  &nbsp;
                  </div>
+=======
+                <div class="col-md-4"> <button class="btn btn-primary submit">Calculate your survival chance</button> </div>
+            </div>
+>>>>>>> f1d1b21d3e7b71f17cb51ff062711e7fa6314aca
         </div>
     </section>
 
@@ -91,6 +98,15 @@
 
         </div>
     </footer>
+
+    <!--bootstrap and Jquery-->
+    <script src="http://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="libs/bootstrap/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+
+    <!--CSV reader-->
+    <script src="/libs/jquery.csv.js"></script>
+    <!--<script src="/libs/CSVtoArray.js"></script>-->
 
     <!--App scripts-->
     <script src="app.js"></script>
