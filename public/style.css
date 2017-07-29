@@ -1,5 +1,5 @@
 body {
-    padding-top: 50px;
+    padding-top: 0px;
     padding-bottom: 20px;
 }
 
@@ -28,4 +28,8 @@ textarea {
 {background-color:#139fda;
 color:#fff;
 
+ }
+
+ .submit{
+     margin-top:20px;
  }
