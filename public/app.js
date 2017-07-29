@@ -94,21 +94,43 @@ function getSurvivalData() {
 }
 
 function displayIndex(data) {
-    $('.survival-index-number').html(data.index);
+    $('.survival-index-number').html(parseFloat(Math.round(data.index * 100) / 100).toFixed(2));
     $('.survival-index').show();
-    showHighchartData();
+    showHighchartData(data);
     $('.highchart').show();
 }
 
-function showHighchartData() {
-    Highcharts.chart('container', {
+function showHighchartData(data) {
+    var chartData = [];
+    var maxGauge = 0;
+    var propertiesNumber = Object.keys(data.gauge).length;
+
+    for (var property in data.gauge) {
+        if (data.gauge.hasOwnProperty(property)) {
+            chartData.push([property, ((data.gauge[property] + 1) * 50) / propertiesNumber]);
+            maxGauge = maxGauge + ((data.gauge[property] + 1) * 50) / propertiesNumber;
+        }
+    }
+
+    var emptyGauge = 100 - maxGauge;
+    chartData.push({
+        name: '',
+        y: emptyGauge,
+        dataLabels: {
+            enabled: false
+        }
+    });
+
+    console.log(chartData);
+
+    Highcharts.chart('gauge-container', {
         chart: {
             plotBackgroundColor: null,
             plotBorderWidth: 0,
             plotShadow: false
         },
         title: {
-            text: 'Browser<br>shares<br>2015',
+            text: 'Survival<br>index<br>' + parseFloat(Math.round(data.index * 100) / 100).toFixed(2),
             align: 'center',
             verticalAlign: 'middle',
             y: 40
@@ -133,22 +155,26 @@ function showHighchartData() {
         },
         series: [{
             type: 'pie',
-            name: 'Browser share',
+            name: 'Survival index',
             innerSize: '50%',
-            data: [
-                ['Firefox', 10.38],
-                ['IE', 56.33],
-                ['Chrome', 24.03],
-                ['Safari', 4.77],
-                ['Opera', 0.91],
-                {
-                    name: 'Proprietary or Undetectable',
-                    y: 0.2,
-                    dataLabels: {
-                        enabled: false
-                    }
-                }
-            ]
+            data: chartData
+
+            // [
+            //     ['Firefox', 10.38],
+            //     ['IE', 56.33],
+            //     ['Chrome', 24.03],
+            //     ['Safari', 4.77],
+            //     ['Opera', 0.91],
+            //     {
+            //         name: 'Proprietary or Undetectable',
+            //         y: 0.2,
+            //         dataLabels: {
+            //             enabled: false
+            //         }
+            //     }
+            // ]
         }]
     });
+
+    $('#gauge-container').show();
 }

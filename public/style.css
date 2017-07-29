@@ -10,7 +10,6 @@ body {
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
-    
 }
 
 
@@ -42,7 +41,7 @@ textarea {
 
 .subtitle {
     color: rgb(217, 87, 17);
-    font-family:-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     font-weight: bolder;
 }
 
@@ -50,64 +49,76 @@ textarea {
     font-size: 20px;
 }
 
-.intro{
-    color:#fff;
+.intro {
+    color: #fff;
 }
 
-.custblock{
-    font-size:24px;
+.custblock {
+    font-size: 24px;
 }
+
 .infotitle {
     font-weight: bold;
-    font-family: -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     font-size: 24px;
 }
 
 
 /* hide survival-index until we have a number */
 
- .info {
-color:#fff;
-padding:20px;
-border-radius:3px;
- display: flex;
-  display: -webkit-flex;
-  flex-wrap: wrap;
- }
+.info {
+    color: #fff;
+    padding: 20px;
+    border-radius: 3px;
+    display: flex;
+    display: -webkit-flex;
+    flex-wrap: wrap;
+}
 
+#zom>div {
+    background-color: #9F86FF;
+    padding: 20px;
+}
 
- #zom>div{
-     background-color:#9F86FF;
-     padding: 20px;
- }
+#fire>div {
+    background-color: #E64759;
+    color: #fff;
+    padding: 20px;
+}
 
- #fire>div{
-     background-color: #E64759;
-       color:#fff;
-       padding: 20px;
- }
+#earth>div {
+    background-color: #1BC98E;
+    color: #fff;
+    padding: 20px;
+}
 
- #earth>div{
-     background-color: #1BC98E;
-       color:#fff;
-       padding: 20px;
- }
+.infoimage {
+    width: 200px;
+}
 
- .infoimage{
-     width:200px;
- }
-
- .survival-index {
+.survival-index {
     display: none;
-    font-weight:bolder;
-     color:#1BC98E;
+    font-weight: bolder;
+    color: #1BC98E;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
-.hgchart{
-    display:none;
+.hgchart {
+    display: none;
 }
 
-.paraph{
-    margin-top:10px;
+.paraph {
+    margin-top: 10px;
+}
+
+.gauge-container {
+    /*max-width: 400px;*/
+    height: 300px;
+    width: 300px;
+    /*min-width: 200px;*/
+    margin: 0 auto;
+}
+
+.highcharts-background {
+    background-color: #293a46;
 }
