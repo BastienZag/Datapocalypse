@@ -31,11 +31,15 @@ color:#fff;
  }
 
  .submit{
-     margin-top:20px;
+     margin-top:24px;
  }
 
  .subtitle{
-    color:#428bca;
+    color:rgb(217,87,17);
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-    font-weight:bold;
+    font-weight:bolder;
+ }
+
+ .subtitleSpan{
+     font-size:20px;
  }
