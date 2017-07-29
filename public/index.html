@@ -8,8 +8,8 @@
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="mapStyle.css"</link>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin=""/>
+    <link rel="stylesheet" href="mapStyle.css" </link>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="" />
 </header>
 
 <body>
@@ -27,48 +27,123 @@
             <div class="row">&nbsp;</div>
             <div class="row">&nbsp;</div>
             <div class="row">
-                <div class="col-md-4">
-                    Where do you live:
+                <div class="col-md-2">&nbsp;</div>
+                <div class="col-md-2">
+                    <span class="text-left"> Where do you live:</span>
                     <div class="dropdown suburb-dropdown">
                         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      Suburb
-                    </button>
+                            Suburb
+                        </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <!--<button class="dropdown-item">1</button>
-                            <button class="dropdown-item">2</button>
-                            <button class="dropdown-item">3</button>-->
                         </div>
                     </div>
 
                 </div>
- <div class="col-md-4">&nbsp; </div>
-                <div class="col-md-4"> <button class="btn btn-primary submit">Calculate your survival chance</button> </div>
-                
+
+                <div class="col-md-2">
+                    <div class="text-center">&nbsp;Age:</div>
+                    <div class="dropdown age-dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownAgeButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Age
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownAgeButton">
+                            <button class="dropdown-item">1 - 12</button>
+                            <button class="dropdown-item">13 - 20 </button>
+                            <button class="dropdown-item">21 - 35</button>
+                            <button class="dropdown-item">36 - 49</button>
+                            <button class="dropdown-item">50 - 60</button>
+                            <button class="dropdown-item">61 - 70</button>
+                            <button class="dropdown-item">71 - 90</button>
+                            <button class="dropdown-item">above 90</button>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-md-2">
+                    <div class="text-center">&nbsp;Scenario:</div>
+                    <div class="dropdown scenario-dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownScenarioButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Scenario
+                    </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownScenarioButton">
+                            <button class="dropdown-item">Zombie Attack</button>
+                            <button class="dropdown-item">Fire Break Out</button>
+                            <button class="dropdown-item">Earthquake</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-2"> <button class="btn btn-primary submit calculate-survival">Calculate your survival chance</button> </div>
+
+            </div>
+
+            <div class="error-message text-danger"></div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+
+            <div class="row survival-index">
+                <h1>Survival index: <span class="survival-index-number"></span></h1>
+            </div>
+
+
+            <div class="row">
+                <div class="subtitle"><span class="subtitleSpan">Intractive Data on the Map</span> (based on your selection) </div>
+                <div class="row">&nbsp;</div>
+                <div class="row">&nbsp;</div>
+                <div class="row"></div>
+
+                <div class="col-md-12">
+                    <div id="mapid" name="mapid">
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <section>
-         <div class="container">
- <div class="row"></div>
-  <div class="row">
-      <div class="subtitle"><h5>Intractive Data on the Map</h5></div>
-                <div class="col-md-12">
-                <div id="mapid" name="mapid">
-                    </div>
-				</div>
-            </div>
- </div>
-    </section>
-
-    <section>
-            <div class="container">
-                <div class="row">&nbsp;</div>
+        <div class="container">
             <div class="row">&nbsp;</div>
-            <div class="row">&nbsp;</div> 
- <div class="row">(Information place here)</div>
+            <div class="row">&nbsp;</div>
+            <div class="row">&nbsp;</div>
+            <div class="row">
+			
+                <div class="col-md-4 info" id="zom">
+
+                    <div>
+                       <div class="text-center infotitle">ZOMBIE ATTACK</div>
+					   <div class="text-center"><image class="infoimage" src="./images/zombie_attack.svg" width="200px"/></div>
+				 		<div>
+						The higher the density, the lower the chances of surviving a Zombie attack. Population density will be the most important factor to determine the survival index. Children should be more careful, Zombies like fresh flesh and will be on the outlook for young humans. Zombies are attracted by wealthy and luxurious areas, hence why living in an area where the average income is high will be more disastrous. 
+						</div>
+                    </div>
+					
+  </div>
+  
+ <div class="col-md-4 info" id="fire">
+ <div>
+ <div class="text-center infotitle">FIRE BREAK OUT</div>
+ <div>
+ When a fire breaks out, people are safer in cities where the population density is higher. In this scenario, if living in a remote place surrounded by bushes, the chances of survival are lower. Wise people are more likely to find an escape from a big fire. Water proximity is the most important survival factor, water being a main resource to calm down fires.
  </div>
-        </section>
+ </div>
+ </div>
+
+<div class="col-md-4 info" id="earth">
+<div>
+<div class="text-center infotitle">EARTHQUAKE</div>
+<div>
+Earthquakes are usually happening in the same areas. If an earthquake happened in the area before, the population will be highly affected. However this may be balanced by living in an area where the average income is higher. Suburbs with a higher income tend to be more prepared to earthquake disasters. Smaller individuals are more flexible and will be more able to protect themselves by hiding in small places, younger individuals are thus more likely to survive. Finally, having hospitals close is important to survive in case of a massive earthquake.
+</div>
+</div>
+</div>
+
+           
+        </div>
+		</div>
+    </section>
 
     <div class="album text-muted">
         <div class="container">
@@ -81,17 +156,17 @@
 
     <footer class="text-muted">
         <div class="container">
-
+            <div class="row">&nbsp;</div>
         </div>
     </footer>
 
     <!--bootstrap and Jquery-->
-    <script src="http://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
     <script src="libs/bootstrap/js/bootstrap.min.js"></script>
 
-	<script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
-	
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+
     <!--CSV reader-->
     <script src="/libs/jquery.csv.js"></script>
     <!--<script src="/libs/CSVtoArray.js"></script>-->
@@ -99,8 +174,8 @@
     <!--App scripts-->
     <script src="app.js"></script>
 
-    	<!-- Map Stuff -->
-	<script src="map.js"></script>
+    <!-- Map Stuff -->
+    <script src="map.js"></script>
 
 </body>
 

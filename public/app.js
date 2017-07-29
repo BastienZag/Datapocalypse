@@ -1,46 +1,34 @@
-const apiUrl = 'https://us-central1-datapocalypse-c3889.cloudfunctions.net/';
-const apiCSV = '';
+const prodApiUrl = 'https://us-central1-datapocalypse-c3889.cloudfunctions.net';
+const localApiUrl = 'http://localhost:5003/datapocalypse-c3889/us-central1';
+const apiUrl = (location.hostname === "localhost" || location.hostname === "127.0.0.1") ? localApiUrl : prodApiUrl;
 
-function getSurvivalData() {
-    $.get(apiUrl + '/getSurvivalData', function(data) {
-        // $(".result").html(data);
-        console.log("Survival Rate: " + data.index);
-    });
-}
+let selectedSuburb;
+(function getSuburbs() {
 
-function displayData() {
-
-}
-
-let populationData;
-let selectedPopulationData;
-
-(function getData() {
-
-    $.get('/population_extract.csv', function(data) {
-        // $(".result").html(data);
-        // console.log("Population data: " + data);
-        populationData = $.csv.toArrays(data);
-        // console.log("Population data: " + populationData);
-        initSuburbsDropdown(populationData);
+    $.get(apiUrl + '/getSuburbs', function(data) {
+        initSuburbsDropdown(data);
     });
 
-    function initSuburbsDropdown(popData) {
-        for (var i = 1; i < popData.length; i++) {
-            var button = createSuburbButton(popData[i][3], i);
-            $('.suburb-dropdown .dropdown-menu').append(button);
+    function initSuburbsDropdown(suburbs) {
+        // add a button for each suburb into the dropdown
+        let buttons = '';
+        for (var i = 1; i < suburbs.length; i++) {
+            buttons = buttons + createSuburbButton(suburbs[i], i);
         }
+        $('.suburb-dropdown .dropdown-menu').append(buttons);
+        // add clic event
+        addClicEvent(arguments);
+    }
 
+    function addClicEvent() {
         // Replace the text from the Dropdown when select an item
         $(".suburb-dropdown .dropdown-menu button").click(function() {
             $(".suburb-dropdown .btn:first-child").text($(this).text());
             $(".suburb-dropdown .btn:first-child").val($(this).text());
-            selectedPopulationData = populationData[$(arguments[0].target).data('index')];
-            console.log(selectedPopulationData);
-
-            // update map
-
-           // updatemap(selectedPopulationData[0], selectedPopulationData[1]);
+            selectedSuburb = {
+                name: $(arguments[0].target).html(),
+                id: $(arguments[0].target).data('index')
+            };
         });
     }
 
@@ -49,3 +37,53 @@ let selectedPopulationData;
     };
 
 })();
+
+
+var selectedScenario;
+var selectedAge;
+(function initAgeAndScenaioDropdown() {
+    // todo: refactor this code
+    var ageDropdownSelector = '.age-dropdown';
+    $(ageDropdownSelector + " .dropdown-menu button").click(function() {
+        $(ageDropdownSelector + " .btn:first-child").text($(this).text());
+        $(ageDropdownSelector + ".btn:first-child").val($(this).text());
+        selectedAge = $(arguments[0].target).html();
+    });
+    var scenarioDropdownSelector = '.scenario-dropdown';
+    $(scenarioDropdownSelector + " .dropdown-menu button").click(function() {
+        $(scenarioDropdownSelector + " .btn:first-child").text($(this).text());
+        $(scenarioDropdownSelector + ".btn:first-child").val($(this).text());
+        selectedScenario = $(arguments[0].target).html();
+    });
+})();
+
+var survivalData;
+// submit event
+$('.calculate-survival').click(getSurvivalData);
+
+function getSurvivalData() {
+
+    // check if the user has selected all params
+    if (!selectedSuburb || !selectedAge || !selectedScenario) {
+        $('.error-message').html('You need to select a Suburb, age bracket and a scenario.').show();
+    } else {
+        $('.error-message').hide();
+
+        const params = {
+            suburb: selectedSuburb,
+            age: selectedAge,
+            scenario: selectedScenario
+        };
+        $.post(apiUrl + '/getSurvivalData', params, function(data) {
+            survivalData = data;
+            console.log(data);
+            // update map, table and display index
+            displayIndex(data);
+        });
+    }
+}
+
+function displayIndex(data) {
+    $('.survival-index-number').html(data.index);
+    $('.survival-index').show();
+}
