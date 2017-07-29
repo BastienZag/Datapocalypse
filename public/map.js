@@ -1,6 +1,8 @@
-var mymap = L.map('mapid').setView([51.505, -0.09], 13);
 
-var mapEle=document.getElementsByName("mapid");
+var lat = -33.868820
+var lng = 151.209296
+
+var mymap = L.map('mapid').setView([lat, lng], 13);
 
 
 L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
