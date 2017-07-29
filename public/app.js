@@ -38,16 +38,30 @@ let selectedSuburb;
 
 })();
 
-let survivalData;
 
+var selectedScenario;
+var selectedAge;
+(function initAgeAndScenaioDropdown() {
+    // todo: refactor this code
+    var ageDropdownSelector = '.age-dropdown';
+    $(ageDropdownSelector + " .dropdown-menu button").click(function() {
+        $(ageDropdownSelector + " .btn:first-child").text($(this).text());
+        $(ageDropdownSelector + ".btn:first-child").val($(this).text());
+        selectedAge = $(arguments[0].target).html();
+    });
+    var scenarioDropdownSelector = '.scenario-dropdown';
+    $(scenarioDropdownSelector + " .dropdown-menu button").click(function() {
+        $(scenarioDropdownSelector + " .btn:first-child").text($(this).text());
+        $(scenarioDropdownSelector + ".btn:first-child").val($(this).text());
+        selectedScenario = $(arguments[0].target).html();
+    });
+})();
+
+var survivalData;
 // submit event
 $('.calculate-survival').click(getSurvivalData);
 
 function getSurvivalData() {
-
-    // todo: get selectedScenario and selectedAge from dropdown
-    const selectedScenario = 'Zombie Attack';
-    const selectedAge = '18 to 24';
 
     // check if the user has selected all params
     if (!selectedSuburb || !selectedAge || !selectedScenario) {
@@ -60,18 +74,16 @@ function getSurvivalData() {
             age: selectedAge,
             scenario: selectedScenario
         };
-
-        console.log(params);
         $.post(apiUrl + '/getSurvivalData', params, function(data) {
             survivalData = data;
             console.log(data);
-
             // update map, table and display index
+            displayIndex(data);
         });
-
     }
 }
 
-function displayData() {
-
+function displayIndex(data) {
+    $('.survival-index-number').html(data.index);
+    $('.survival-index').show();
 }
