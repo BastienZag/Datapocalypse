@@ -62,8 +62,8 @@ exports.getSurvivalData = functions.https.onRequest((request, response) => {
             selectedWeight[2] * suburbData.income +
             selectedWeight[3] * suburbData.age +
             selectedWeight[4] * suburbData.hospitals +
-            selectedWeight[5] * suburbData.water +
-            ageBuckets[age];
+            selectedWeight[5] * suburbData.water;
+        // + ageBuckets[age];
 
         survivalData = {
             index,

@@ -10,8 +10,8 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="./map/mapStyle.css" </link>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="" />
-<script src="https://code.highcharts.com/highcharts.js"></script>
-<script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
 </header>
 
 <body>
@@ -90,7 +90,7 @@
                 <h1>Survival index: <span class="survival-index-number"></span></h1>
             </div>
 
-<div id="container" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto;display:none" class="hgchart"></div>
+            <div id="container" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto;display:none" class="hgchart"></div>
 
             <div class="row">
                 <div class="subtitle"><span class="subtitleSpan">Intractive Data on the Map</span> (based on your selection) </div>
@@ -112,65 +112,70 @@
             <div class="row">&nbsp;</div>
             <div class="row">&nbsp;</div>
             <div class="row">
-			
+
                 <div class="col-md-4 info" id="zom">
 
                     <div>
-                       <div class="text-center infotitle">ZOMBIE ATTACK</div>
-					   <div class="text-center"><image class="infoimage" src="./images/zombie_attack.svg" width="200px"/></div>
-				 		<div>
-						The higher the density, the lower the chances of surviving a Zombie attack. 
-						Population density will be the most important factor to determine the survival index.
-<div class="paraph">
-						Children should be more careful, Zombies like fresh flesh and will be on the outlook for young humans.
+                        <div class="text-center infotitle">ZOMBIE ATTACK</div>
+                        <div class="text-center">
+                            <image class="infoimage" src="./images/zombie_attack.svg" width="200px" />
+                        </div>
+                        <div>
+                            The higher the density, the lower the chances of surviving a Zombie attack. Population density will be the most important factor to determine the survival index.
+                            <div class="paraph">
+                                Children should be more careful, Zombies like fresh flesh and will be on the outlook for young humans.
 
-<div class="paraph">						Zombies are attracted by wealthy and luxurious areas, hence why living in an area where the average income is high will be more disastrous.
- </div>
-				</div>
+                                <div class="paraph"> Zombies are attracted by wealthy and luxurious areas, hence why living in an area where the average income is high will be more disastrous.
+                                </div>
+                            </div>
 
-				</div>
+                        </div>
                     </div>
-					
-  </div>
-  
- <div class="col-md-4 info" id="fire">
- <div>
- <div class="text-center infotitle">FIRE BREAK OUT</div>
- <div class="text-center"><image class="infoimage" src="./images/fires.svg" width="200px"/></div>
- <div>
- When a fire breaks out, people are safer in cities where the population density is higher.
-<div class="paraph">
- In this scenario, if living in a remote place surrounded by bushes, the chances of survival are lower.
-<div class="paraph">
- Wise people are more likely to find an escape from a big fire. Water proximity is the most important survival factor, water being a main resource to calm down fires.
- </div>
- </div>
- </div>
- </div>
- </div>
 
-<div class="col-md-4 info" id="earth">
-<div>
-<div class="text-center infotitle">EARTHQUAKE</div>
-<div class="text-center"><image class="infoimage" src="./images/earthquake.svg" width="200px"/></div>
-<div>
-Earthquakes are usually happening in the same areas. If an earthquake happened in the area before, the population will be highly affected. 
-<div class="paraph">
-However this may be balanced by living in an area where the average income is higher. 
-<div class="paraph">
-Suburbs with a higher income tend to be more prepared to earthquake disasters. Smaller individuals are more flexible and will be more able to protect themselves by hiding in small places, younger individuals are thus more likely to survive.
-<div class="paraph">
- Finally, having hospitals close is important to survive in case of a massive earthquake.
- </div>
-</div>
-</div>
-</div>
-</div>
-</div>
+                </div>
 
-           
+                <div class="col-md-4 info" id="fire">
+                    <div>
+                        <div class="text-center infotitle">FIRE BREAK OUT</div>
+                        <div class="text-center">
+                            <image class="infoimage" src="./images/fires.svg" width="200px" />
+                        </div>
+                        <div>
+                            When a fire breaks out, people are safer in cities where the population density is higher.
+                            <div class="paraph">
+                                In this scenario, if living in a remote place surrounded by bushes, the chances of survival are lower.
+                                <div class="paraph">
+                                    Wise people are more likely to find an escape from a big fire. Water proximity is the most important survival factor, water being a main resource to calm down fires.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 info" id="earth">
+                    <div>
+                        <div class="text-center infotitle">EARTHQUAKE</div>
+                        <div class="text-center">
+                            <image class="infoimage" src="./images/earthquake.svg" width="200px" />
+                        </div>
+                        <div>
+                            Earthquakes are usually happening in the same areas. If an earthquake happened in the area before, the population will be highly affected.
+                            <div class="paraph">
+                                However this may be balanced by living in an area where the average income is higher.
+                                <div class="paraph">
+                                    Suburbs with a higher income tend to be more prepared to earthquake disasters. Smaller individuals are more flexible and will be more able to protect themselves by hiding in small places, younger individuals are thus more likely to survive.
+                                    <div class="paraph">
+                                        Finally, having hospitals close is important to survive in case of a massive earthquake.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
         </div>
-		</div>
     </section>
 
     <div class="album text-muted">
@@ -200,11 +205,10 @@ Suburbs with a higher income tend to be more prepared to earthquake disasters. S
     <!--<script src="/libs/CSVtoArray.js"></script>-->
 
 
-<div id="container" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
+    <div id="container" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
 
     <!--App scripts-->
     <script src="app.js"></script>
-	
 
     <!-- Map Stuff -->
     <script src="./map/map.js"></script>
