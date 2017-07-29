@@ -40,7 +40,7 @@ $.getJSON("/map/waterpoints.geojson",function(data){
 
 var runIcon = L.icon({
     iconUrl: '/map/run.png',
-    iconSize:     [40, 40], // size of the icon
+    iconSize:     [60, 60], // size of the icon
 });
 
-L.marker([lat, lon], {icon: greenIcon}).addTo(map);
+L.marker([lat, lng], {icon: runIcon}).addTo(mymap);
