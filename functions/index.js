@@ -62,22 +62,22 @@ exports.getSurvivalData = functions.https.onRequest((request, response) => {
         };
 
         survivalData.gauge = {};
-        if (selectedWeight[0]) {
+        if (selectedWeight[0] && selectedWeight[0] !== 0) {
             survivalData.gauge.density = selectedWeight[0] * suburbData.Density_Norm;
         }
-        if (selectedWeight[1]) {
+        if (selectedWeight[1] && selectedWeight[1] !== 0) {
             survivalData.gauge.earthquake = selectedWeight[1] * suburbData.Earthquake_Norm;
         }
-        if (selectedWeight[2]) {
+        if (selectedWeight[2] && selectedWeight[2] !== 0) {
             survivalData.gauge.income = selectedWeight[2] * suburbData.Income_Norm;
         }
-        if (selectedWeight[3]) {
+        if (selectedWeight[3] && selectedWeight[3] !== 0) {
             survivalData.gauge.age = selectedWeight[3] * ageBuckets[age];
         }
-        if (selectedWeight[4]) {
+        if (selectedWeight[4] && selectedWeight[4] !== 0) {
             survivalData.gauge.hospital = selectedWeight[4] * suburbData.Hospital_Norm;
         }
-        if (selectedWeight[5]) {
+        if (selectedWeight[5] && selectedWeight[5] !== 0) {
             survivalData.gauge.water = selectedWeight[5] * suburbData.Water_Norm;
         }
 

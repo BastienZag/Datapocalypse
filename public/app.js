@@ -1,6 +1,6 @@
 const prodApiUrl = 'https://us-central1-datapocalypse-c3889.cloudfunctions.net';
 const localApiUrl = 'http://localhost:5003/datapocalypse-c3889/us-central1';
-const apiUrl = prodApiUrl;//(location.hostname === "localhost" || location.hostname === "127.0.0.1") ? localApiUrl : prodApiUrl;
+const apiUrl = prodApiUrl; //(location.hostname === "localhost" || location.hostname === "127.0.0.1") ? localApiUrl : prodApiUrl;
 
 let selectedSuburb;
 (function getSuburbs() {
@@ -16,14 +16,14 @@ let selectedSuburb;
             buttons = buttons + createSuburbButton(suburbs[i], i);
         }
         $('.suburb-dropdown .dropdown-menu').append(buttons);
-       // $('.suburb-dropdown').append(buttons);
+        // $('.suburb-dropdown').append(buttons);
         // add clic event
         addClicEvent(arguments);
     }
 
     function addClicEvent() {
         // Replace the text from the Dropdown when select an item
-       $(".suburb-dropdown .dropdown-menu button").click(function() {
+        $(".suburb-dropdown .dropdown-menu button").click(function() {
             $(".suburb-dropdown .btn:first-child").text($(this).text());
             $(".suburb-dropdown .btn:first-child").val($(this).text());
             selectedSuburb = {
@@ -31,20 +31,10 @@ let selectedSuburb;
                 id: $(arguments[0].target).data('index')
             };
         });
-
-       /* $(".suburb-dropdown").click(function() {
-            $(".suburb-dropdown:first-child").text($(this).text());
-            $(".suburb-dropdown:first-child").val($(this).text());
-            selectedSuburb = {
-                name: $(arguments[0].target).html(),
-                id: $(arguments[0].target).data('index')
-            };
-        });*/
     }
 
     function createSuburbButton(suburbName, index) {
         return '<button class="dropdown-item" data-index="' + index + '">' + suburbName + '</button>';
-        //'<option key="' + index + '">' + suburbName + '</option>'
     };
 
 })();
@@ -87,7 +77,6 @@ function getSurvivalData() {
         $.post(apiUrl + '/getSurvivalData', params, function(data) {
             survivalData = data;
             console.log(data);
-            // update map, table and display index
             displayIndex(data);
         });
     }
