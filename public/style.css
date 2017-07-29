@@ -1,12 +1,14 @@
 body {
     padding-top: 0px;
     padding-bottom: 20px;
+    background-color: #293a46;
 }
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
+    
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
@@ -46,4 +48,29 @@ color:#fff;
 
  .infotitle{
      font-weight:bold;
+ }
+
+ .info {
+color:#fff;
+padding:20px;
+
+border-radius:3px;
+ }
+
+
+ #zom>div{
+     background-color:#9F86FF;
+     padding: 20px;
+ }
+
+ #fire>div{
+     background-color: #E64759;
+       color:#fff;
+       padding: 20px;
+ }
+
+ #earth>div{
+     background-color: #E4D836;
+       color:#fff;
+       padding: 20px;
  }
