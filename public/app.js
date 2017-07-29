@@ -1,11 +1,7 @@
 const apiUrl = 'https://us-central1-datapocalypse-c3889.cloudfunctions.net/';
 const apiCSV = '';
 
-// Replace the text from the Dropdown when select an item
-$(".suburb-dropdown .dropdown-menu button").click(function() {
-    $(".suburb-dropdown .btn:first-child").text($(this).text());
-    $(".suburb-dropdown .btn:first-child").val($(this).text());
-});
+
 
 function getSurvivalData() {
     $.get(apiUrl + '/getSurvivalData', function(data) {
@@ -18,17 +14,31 @@ function displayData() {
 
 }
 
+
+let populationData = {};
 (function getData() {
 
     $.get('/population_extract.csv', function(data) {
         // $(".result").html(data);
-        // var data2 = $.csv.toArray(data);
-        console.log("Population data: " + data2);
+        // console.log("Population data: " + data);
+        populationData = $.csv.toArrays(data);
+        // console.log("Population data: " + populationData);
+        initSuburbsDropdown(populationData);
     });
 
 
-    function initSuburbsDropdown() {
 
+    function initSuburbsDropdown(popData) {
+        for (var i = 1; i < popData.length; i++) {
+            var button = createSuburbButton(popData[i][3]);
+            $('.suburb-dropdown .dropdown-menu').append(button);
+        }
+
+        // Replace the text from the Dropdown when select an item
+        $(".suburb-dropdown .dropdown-menu button").click(function() {
+            $(".suburb-dropdown .btn:first-child").text($(this).text());
+            $(".suburb-dropdown .btn:first-child").val($(this).text());
+        });
     }
 
     function createSuburbButton(suburbName) {
