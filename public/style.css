@@ -3,47 +3,58 @@ body {
     padding-bottom: 20px;
 }
 
+
 /* Set padding to keep content from hitting the edges */
+
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
 }
 
+
 /* Override the default bootstrap behavior where horizontal description lists 
    will truncate terms that are too long to fit in the left column 
 */
+
 .dl-horizontal dt {
     white-space: normal;
 }
 
+
 /* Set width on the form input elements since they're 100% wide by default */
+
 input,
 select,
 textarea {
     max-width: 280px;
 }
 
+.jumbotron {
+    background-color: #139fda;
+    color: #fff;
+}
 
-.jumbotron
-{background-color:#139fda;
-color:#fff;
+.submit {
+    margin-top: 24px;
+}
 
- }
+.subtitle {
+    color: rgb(217, 87, 17);
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: bolder;
+}
 
- .submit{
-     margin-top:24px;
- }
+.subtitleSpan {
+    font-size: 20px;
+}
 
- .subtitle{
-    color:rgb(217,87,17);
-    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-    font-weight:bolder;
- }
+.infotitle {
+    font-weight: bold;
+}
 
- .subtitleSpan{
-     font-size:20px;
- }
 
- .infotitle{
-     font-weight:bold;
- }
+/* hide survival-index until we have a number */
+
+.survival-index {
+    display: none;
+}
