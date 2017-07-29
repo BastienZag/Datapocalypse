@@ -122,3 +122,19 @@ textarea {
 .highcharts-background {
     background-color: #293a46;
 }
+
+.survival-index-number {
+    font-size: 160px;
+}
+
+@media(max-width: 1200px) {
+    .survival-index-number {
+        font-size: 120px;
+    }
+}
+
+@media(max-width: 900px) {
+    .survival-index-number {
+        font-size: 90px;
+    }
+}

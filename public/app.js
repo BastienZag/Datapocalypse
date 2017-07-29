@@ -83,7 +83,7 @@ function getSurvivalData() {
 }
 
 function displayIndex(data) {
-    $('.survival-index-number').html(parseFloat(Math.round(data.index * 100) / 100).toFixed(2));
+    $('.survival-index-number').html(parseFloat(Math.round(data.index * 100) / 100).toFixed(2) + 'pt');
     $('.survival-index').show();
     showHighchartData(data);
     $('.highchart').show();
