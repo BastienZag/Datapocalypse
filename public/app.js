@@ -37,6 +37,10 @@ let selectedPopulationData;
             $(".suburb-dropdown .btn:first-child").val($(this).text());
             selectedPopulationData = populationData[$(arguments[0].target).data('index')];
             console.log(selectedPopulationData);
+
+            // update map
+
+           // updatemap(selectedPopulationData[0], selectedPopulationData[1]);
         });
     }
 
