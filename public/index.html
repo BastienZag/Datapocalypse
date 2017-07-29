@@ -27,8 +27,9 @@
             <div class="row">&nbsp;</div>
             <div class="row">&nbsp;</div>
             <div class="row">
-                <div class="col-md-4">
-                    Where do you live:
+                <div class="col-md-2">&nbsp;</div>
+                <div class="col-md-2">
+                   <span class="text-left"> Where do you live:</span>
                     <div class="dropdown suburb-dropdown">
                         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       Suburb
@@ -41,8 +42,38 @@
                     </div>
 
                 </div>
- <div class="col-md-4">&nbsp; </div>
-                <div class="col-md-4"> <button class="btn btn-primary submit">Calculate your survival chance</button> </div>
+ <div class="col-md-2">
+     Age:
+      <div class="dropdown age-dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownAgeButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Age
+                    </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownAgeButton">
+                            <button class="dropdown-item">1 - 12</button>
+                            <button class="dropdown-item">13 - 20 </button>
+                            <button class="dropdown-item">21 - 35</button>
+                            <button class="dropdown-item">36 - 49</button>
+                            <button class="dropdown-item">50 - 60</button>
+                            <button class="dropdown-item">61 - 70</button>
+                            <button class="dropdown-item">71 - 90</button>
+                            <button class="dropdown-item">above 90</button>
+                        </div>
+                    </div>    
+     
+ </div>
+  <div class="col-md-2">  Scenario:   
+ <div class="dropdown scenario-dropdown">
+       <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownScenarioButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Scenario
+                    </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownScenarioButton">
+                            <button class="dropdown-item">Zombie Attack</button>
+                            <button class="dropdown-item">Fire Break Out</button>
+                            <button class="dropdown-item">Earthquake</button>                           
+                        </div>
+                    </div>
+ </div>
+                <div class="col-md-2"> <button class="btn btn-primary submit">Calculate your survival chance</button> </div>
                 
             </div>
         </div>
@@ -52,7 +83,7 @@
          <div class="container">
  <div class="row"></div>
   <div class="row">
-      <div class="subtitle"><h5>Intractive Data on the Map</h5></div>
+      <div class="subtitle bg-success"><h5>Intractive Data on the Map</h5></div>
                 <div class="col-md-12">
                 <div id="mapid" name="mapid">
                     </div>
