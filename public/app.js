@@ -44,24 +44,32 @@ let survivalData;
 $('.calculate-survival').click(getSurvivalData);
 
 function getSurvivalData() {
+
     // todo: get selectedScenario and selectedAge from dropdown
     const selectedScenario = 'Zombie Attack';
     const selectedAge = '18 to 24';
 
-    const params = {
-        suburb: selectedSuburb,
-        age: selectedAge,
-        scenario: selectedScenario
-    };
+    // check if the user has selected all params
+    if (!selectedSuburb || !selectedAge || !selectedScenario) {
+        $('.error-message').html('You need to select a Suburb, age bracket and a scenario.').show();
+    } else {
+        $('.error-message').hide();
 
-    console.log(params);
+        const params = {
+            suburb: selectedSuburb,
+            age: selectedAge,
+            scenario: selectedScenario
+        };
 
-    $.post(apiUrl + '/getSurvivalData', params, function(data) {
-        survivalData = data;
-        console.log(data);
+        console.log(params);
+        $.post(apiUrl + '/getSurvivalData', params, function(data) {
+            survivalData = data;
+            console.log(data);
 
-        // update map, table and display index
-    });
+            // update map, table and display index
+        });
+
+    }
 }
 
 function displayData() {
