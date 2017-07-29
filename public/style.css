@@ -50,6 +50,13 @@ textarea {
     font-size: 20px;
 }
 
+.intro{
+    color:#fff;
+}
+
+.custblock{
+    font-size:24px;
+}
 .infotitle {
     font-weight: bold;
     font-family: -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
