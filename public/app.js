@@ -17,3 +17,8 @@ function getSurvivalData() {
 function displayData() {
 
 }
+
+
+(function getSuburbs() {
+
+})();

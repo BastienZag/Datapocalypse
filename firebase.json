@@ -1,6 +1,9 @@
 {
     "hosting": {
         "public": "public",
-        "rewrites": []
+        "rewrites": [{
+            "source": "/map",
+            "destination": "/map.html"
+        }]
     }
 }
