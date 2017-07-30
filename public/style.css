@@ -151,5 +151,9 @@ textarea {
 font-family: "Comic Sans","Comic Sans MS",cursive;
 font-style:italic;
 font-weight:bolder;
-font-size:22px;
+font-size:24px;
+}
+
+.link1{
+   color: #fff !important;
 }
