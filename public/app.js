@@ -35,9 +35,8 @@ let selectedSuburb;
         });*/
 
          $(".suburb-dropdown").click(function() {
-            $(".suburb-dropdown option:selected").text();
-            $(".suburb-dropdown option:selected").val();
-            selectedSuburb = {
+             //if ($(".suburb-dropdown option:selected").text()!="Sur")
+              selectedSuburb = {
                 name: $(".suburb-dropdown option:selected").text(),
                 id:  $(".suburb-dropdown option:selected").val()
             };
