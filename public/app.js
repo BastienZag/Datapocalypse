@@ -19,6 +19,10 @@ let selectedSuburb;
 
 //new select dropdown
          $('.suburb-dropdown').append(buttons);
+         selectedSuburb = {
+                name: $(".suburb-dropdown option:selected").text(),
+                id:  $(".suburb-dropdown option:selected").val()
+            };
         // add clic event
         addClicEvent(arguments);
     }
