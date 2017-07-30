@@ -1,46 +1,72 @@
+var mymap;
+var userMarker;
 
-var lat = -33.868820
-var lng = 151.209296
+function initMap() {
 
-var mymap = L.map('mapid').setView([lat, lng], 13);
+    var lat = -33.868820
+    var lng = 151.209296
 
-var host = 'https://maps.omniscale.net/v2/{id}/style.grayscale/{z}/{x}/{y}.png?access_token={accessToken}'
-var hostMapBox = 'https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}'
+    mymap = L.map('mapid').setView([lat, lng], 13);
 
-L.tileLayer.grayscale(hostMapBox, {
-    attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
-    maxZoom: 18,
-    id: 'mapbox.streets',
-    accessToken: 'pk.eyJ1IjoiZGF0YXBvY2FseXBzZSIsImEiOiJjajVvbmp5eDIwMXZ6MzNxbWM1OHkxZDF2In0.pGgODeyy-u8IwlqXUHCYPg'
-}).addTo(mymap);
+    // var mcg = new L.MarkerClusterGroup(....);
 
-$.getJSON("/map/hospitals.geojson",function(data){
-    var iconHos = L.icon({
-    iconUrl: '/map/hospital.gif',
-    iconSize: [30,30]
-  }); 
-  L.geoJson(data  ,{
-    pointToLayer: function(feature,latlng){
-	  return L.marker(latlng,{icon: iconHos});
-    }
-  }  ).addTo(mymap);
-});
+    // //Remove everything outside the current view (Performance)
+    // mcg._getExpandedVisibleBounds = function () {
+    //     return mcg._map.getBounds();
+    // };
 
-$.getJSON("/map/waterpoints.geojson",function(data){
-    var iconWater = L.icon({
-    iconUrl: '/map/water.png',
-    iconSize: [30,30]
-  }); 
-  L.geoJson(data  ,{
-    pointToLayer: function(feature,latlng){
-	  return L.marker(latlng,{icon: iconWater});
-    }
-  }  ).addTo(mymap);
-});
+    var host = 'https://maps.omniscale.net/v2/{id}/style.grayscale/{z}/{x}/{y}.png?access_token={accessToken}'
+    var hostMapBox = 'https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}'
 
-var runIcon = L.icon({
-    iconUrl: '/map/run.png',
-    iconSize:     [60, 60], // size of the icon
-});
+    L.tileLayer.grayscale(hostMapBox, {
+        attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
+        maxZoom: 18,
+        id: 'mapbox.streets',
+        accessToken: 'pk.eyJ1IjoiZGF0YXBvY2FseXBzZSIsImEiOiJjajVvbmp5eDIwMXZ6MzNxbWM1OHkxZDF2In0.pGgODeyy-u8IwlqXUHCYPg'
+    }).addTo(mymap);
 
-L.marker([lat, lng], {icon: runIcon}).addTo(mymap);
+    $.getJSON("/map/hospitals.geojson", function(data) {
+        var iconHos = L.icon({
+            iconUrl: '/map/hospital.gif',
+            iconSize: [30, 30]
+        });
+        L.geoJson(data, {
+            pointToLayer: function(feature, latlng) {
+                return L.marker(latlng, { icon: iconHos });
+            }
+        }).addTo(mymap);
+    });
+
+    $.getJSON("/map/waterpoints.geojson", function(data) {
+        var iconWater = L.icon({
+            iconUrl: '/map/water.png',
+            iconSize: [30, 30]
+        });
+        L.geoJson(data, {
+            pointToLayer: function(feature, latlng) {
+                return L.marker(latlng, { icon: iconWater });
+            }
+        }).addTo(mymap);
+    });
+
+    var runIcon = L.icon({
+        iconUrl: '/map/run.png',
+        iconSize: [60, 60], // size of the icon
+    });
+
+    userMarker = L.marker([lat, lng], { icon: runIcon });
+    userMarker.addTo(mymap);
+}
+
+initMap();
+
+function updateMap(lat, lng) {
+    mymap.setView([lat, lng], 13);
+    var newLatLng = new L.LatLng(lat, lng);
+    userMarker.setLatLng(newLatLng)
+}
+
+// var lat = (e.latlng.lat);
+//     var lng = (e.latlng.lng);
+//     var newLatLng = new L.LatLng(lat, lng);
+//     marker.setLatLng(newLatLng);

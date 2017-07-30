@@ -91,6 +91,7 @@ function getSurvivalData() {
             survivalData = data;
             console.log(data);
             displayIndex(data);
+            updateMap(survivalData.suburb.Y, survivalData.suburb.X);
         });
     }
 }
@@ -123,7 +124,7 @@ function showHighchartData(data) {
     var maxGauge = 0;
     var propertiesNumber = Object.keys(data.gauge).length;
     var colors = ['#ff8a09', '#ffe699', '#c00000', '#ffc000', '#f4b183', '#000000'];
-    var grey = '#595959';
+    var grey = '#000';
 
     /*Colour Scheme:
     black: #000000
