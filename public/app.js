@@ -15,26 +15,39 @@ let selectedSuburb;
         for (var i = 1; i < suburbs.length; i++) {
             buttons = buttons + createSuburbButton(suburbs[i], i);
         }
-        $('.suburb-dropdown .dropdown-menu').append(buttons);
-        // $('.suburb-dropdown').append(buttons);
+      //  $('.suburb-dropdown .dropdown-menu').append(buttons);
+
+//new select dropdown
+         $('.suburb-dropdown').append(buttons);
         // add clic event
         addClicEvent(arguments);
     }
 
     function addClicEvent() {
         // Replace the text from the Dropdown when select an item
-        $(".suburb-dropdown .dropdown-menu button").click(function() {
+       /* $(".suburb-dropdown .dropdown-menu button").click(function() {
             $(".suburb-dropdown .btn:first-child").text($(this).text());
             $(".suburb-dropdown .btn:first-child").val($(this).text());
             selectedSuburb = {
                 name: $(arguments[0].target).html(),
                 id: $(arguments[0].target).data('index')
             };
+        });*/
+
+         $(".suburb-dropdown").click(function() {
+            $(".suburb-dropdown option:selected").text();
+            $(".suburb-dropdown option:selected").val();
+            selectedSuburb = {
+                name: $(".suburb-dropdown option:selected").text(),
+                id:  $(".suburb-dropdown option:selected").val()
+            };
         });
+
     }
 
     function createSuburbButton(suburbName, index) {
-        return '<button class="dropdown-item" data-index="' + index + '">' + suburbName + '</button>';
+        return '<option value="'+index+'">'+ suburbName +'</option>';
+        // '<button class="dropdown-item" data-index="' + index + '">' + suburbName + '</button>';
     };
 
 })();
