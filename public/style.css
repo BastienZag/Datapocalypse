@@ -143,6 +143,10 @@ textarea {
     padding-bottom: 30px;
 }
 
+.open-data-used {
+    margin: 50px auto;
+    color: white;
+}
 .led{
   font-size:  20px;
 }
