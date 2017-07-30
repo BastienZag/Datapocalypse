@@ -109,11 +109,15 @@ function displayIndex(data) {
     if ((parseInt(barVal)>50)&& (parseInt(barVal)<80))
     {
         $(".indexdesc").text("Most individuals have a similar survival index. Be aware that you aren’t very safe in your location though and should be prepared for a disaster. ");
+        $('.survival-index-number').css('color','yellow');
+        $('.survival-index').css('color','yellow');
     }
     
     if (parseInt(barVal)>=80)
     {
         $(".indexdesc").text("Lucky you! Your chances of survival are high, much higher than the average Australian.");
+         $('.survival-index-number').css({"color":"green"});
+          $('.survival-index').css({"color":"green"});
     }
    
     $('.highchart').show();
