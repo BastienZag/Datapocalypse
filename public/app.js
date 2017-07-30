@@ -98,6 +98,23 @@ function getSurvivalData() {
 function displayIndex(data) {
 
     showHighchartData(data);
+    var barVal=$('.survival-index-number').text().substring(0, $('.survival-index-number').text().length-1);
+
+    if (parseInt(barVal)<=50)
+    {
+        $(".indexdesc").text("Your likehood of survival is small. You should consider moving to another area where it may be more safe for you. ");
+    }
+
+    if ((parseInt(barVal)>50)&& (parseInt(barVal)<80))
+    {
+        $(".indexdesc").text("Most individuals have a similar survival index. Be aware that you aren’t very safe in your location though and should be prepared for a disaster. ");
+    }
+    
+    if (parseInt(barVal)>=80)
+    {
+        $(".indexdesc").text("Lucky you! Your chances of survival are high, much higher than the average Australian.");
+    }
+   
     $('.highchart').show();
 }
 
