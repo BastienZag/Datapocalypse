@@ -119,7 +119,7 @@ function showHighchartData(data) {
 
     Highcharts.chart('gauge-container', {
         chart: {
-            plotBackgroundColor: null,
+            plotBackgroundColor: '#000',
             plotBorderWidth: 0,
             plotShadow: false
         },
