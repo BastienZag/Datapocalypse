@@ -1,0 +1,160 @@
+---
+title: "Govhack 2017"
+output: html_notebook
+---
+
+Download libraries.
+```{r}
+library(ggplot2)
+```
+
+Dataframe for the weights, scenario and age mapping.
+```{r}
+master_table <- master_tabler_new
+
+zombie_attack_weights = c(-5,0,-1,1,0,0)
+fire_outbreak_weights = c(-0.5,0,0,1.5,0,5)
+earthquake_weights = c(0,-5,0.5,-2,3,0)
+
+df = data.frame(zombie_attack_weights,fire_outbreak_weights,earthquake_weights)  
+```
+
+Function calculate survival index
+```{r}
+calculate_survival <- function(scenario, age, table){
+  
+  Age_Norm <- 0.5
+  if (age < 12) { Age_Norm <- 0.1}
+  else if (age < 20) { Age_Norm <- 0.2}
+  else if (age < 35) { Age_Norm <- 0.3}
+  else if (age < 49) { Age_Norm <- 0.4}
+  else if (age < 60) { Age_Norm <- 0.5}
+  else if (age < 70) { Age_Norm <- 0.6}
+  else if (age < 90) { Age_Norm <- 0.7}
+  else Age_Norm <- 0.8
+  
+  if (scenario=='Zombie Attack') {
+    weights <- zombie_attack_weights
+  } else if (scenario=='Fire Outbreak') {
+    weights <- fire_outbreak_weights
+  } else weights <- earthquake_weights
+  
+  my_table <- table
+  
+  survival_index_suburb <- weights[1] * my_table$Density_Norm + weights[2] * my_table$Income_Norm + weights[3] * my_table$Earthquake_Norm + weights[4] * my_table$Hospital_Norm + weights[5] * Age_Norm + weights[6] * my_table$Water_Norm
+  
+  survival_index_suburb <- (survival_index_suburb+1)*50
+  
+  return(survival_index_suburb)
+  
+}
+```
+
+subset abs_pop_age and merge
+```{r}
+abs_pop_age$Code <- abs_pop_age$ASGS_2016
+abs_pop_age_subset <- abs_pop_age[which(abs_pop_age$SEX_ABS == 3 & abs_pop_age$REGIONTYPE == "SA2" & abs_pop_age$Age != "All ages"),]
+abs_pop_age_subset$Age <- as.integer(abs_pop_age_subset$Age)
+
+is.integer(abs_pop_age_subset$Age)
+
+all <- merge(x = abs_pop_age_subset, y = master_table, by = "Code", all.x = TRUE)
+
+```
+need to apply function to all age groups
+sapply(all, function(x) calculate_survival('Zombie Attack',x[3],all))
+
+
+Map population vs survival index
+
+Map yourself against population
+
+```{r}
+my_location_code <- 10042
+my_age <- 90
+my_scenario <- 'Fire Outbreak'
+
+master_table$survival_index <- calculate_survival(my_scenario,my_age,master_table)
+
+ ggplot(data = master_table , aes(x = calculate_survival(my_scenario,my_age,master_table), y = Population)) + 
+  geom_point() + 
+  geom_point(data = master_table[which(master_table$Code==my_location_code),], aes (x = survival_index, y = Population), colour = 'red') +
+  ggtitle("Fire Outbreak Survival Index") +
+  labs(y= "Population", x = "Survival Index")
+```
+
+1. Fire Outbreak Population Map
+```{r}
+my_age <- 40
+my_scenario <- 'Fire Outbreak'
+
+master_table$survival_index <- calculate_survival(my_scenario,my_age,master_table)
+
+ggplot(data = master_table , aes(x = calculate_survival(my_scenario,my_age,master_table), y = Population)) + 
+  geom_point() + 
+  ggtitle("Fire Outbreak Survival Index") +
+  labs(y= "Population", x = "Survival Index")
+```
+
+
+2. Zombie Attack Population Map
+```{r}
+my_age <- 40
+my_scenario <- 'Zombie Attack'
+
+master_table$survival_index <- calculate_survival(my_scenario,my_age,master_table)
+
+ggplot(data = master_table , aes(x = calculate_survival(my_scenario,my_age,master_table), y = Population)) + 
+  geom_point() + 
+  ggtitle("Zombie Attack Survival Index") +
+  labs(y= "Population", x = "Survival Index")
+```
+
+
+3. Earthquake Population Map
+```{r}
+my_age <- 40
+my_scenario <- 'Earthquake'
+
+master_table$survival_index <- calculate_survival(my_scenario,my_age,master_table)
+
+ggplot(data = master_table , aes(x = calculate_survival(my_scenario,my_age,master_table), y = Population)) + 
+  geom_point() + 
+  ggtitle("Earthquake Survival Index") +
+  labs(y= "Population", x = "Survival Index")
+```
+
+
+Find min and max suburbs functions
+```{r}
+find_worse_suburb <- function(my_scenario,my_age,master_table) {
+  master_table$survival_index <- calculate_survival(my_scenario,my_age,master_table)
+  master_table[which.min(master_table$survival_index),]$Suburb
+}
+
+find_best_suburb <- function(my_scenario,my_age,master_table) {
+  master_table$survival_index <- calculate_survival(my_scenario,my_age,master_table)
+  master_table[which(master_table$survival_index == max(master_table$survival_index)),]$Suburb
+}
+```
+
+
+Zombie Attack
+```{r}
+find_worse_suburb('Zombie Attack',40,master_table)
+find_best_suburb('Zombie Attack',40,master_table)
+
+min(master_table$survival_index,na.rm = TRUE)
+```
+
+Fire
+```{r}
+find_worse_suburb('Fire Outbreak',40,master_table)
+find_best_suburb('Fire Outbreak',40,master_table)
+```
+
+Earthquake
+```{r}
+find_worse_suburb('Earthquake',40,master_table)
+find_best_suburb('Earthquake',40,master_table)
+```
