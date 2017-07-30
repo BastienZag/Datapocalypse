@@ -1,5 +1,5 @@
 const functions = require('firebase-functions');
-const populationJSON = require('./population.json');
+const populationJSON = require('./population_small.json');
 const firebase = require('firebase');
 
 function CROSS(request, response) {
