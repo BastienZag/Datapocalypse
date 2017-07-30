@@ -39,12 +39,12 @@ exports.getSurvivalData = functions.https.onRequest((request, response) => {
         const ageBuckets = {
             '1 - 12': 0.1,
             '13 - 20': 0.2,
-            '21 - 35': 0.3,
-            '36 - 49': 0.4,
-            '50 - 60': 0.5,
-            '61 - 70': 0.6,
-            '71 - 90': 0.7,
-            'above 90': 0.8
+            '21 - 35': 0.6,
+            '36 - 49': 0.8,
+            '50 - 60': 0.6,
+            '61 - 70': 0.3,
+            '71 - 90': 0.2,
+            'above 90': 0.1
         };
 
         // calculate index

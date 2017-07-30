@@ -106,13 +106,14 @@ function showHighchartData(data) {
     $('.survival-index-number').html(parseFloat(Math.round(maxGauge * 100) / 100).toFixed(2) + '%');
     $('.survival-index').show();
 
-    // chartData.push({
-    //     name: '',
-    //     y: emptyGauge,
-    //     dataLabels: {
-    //         enabled: false
-    //     }
-    // });
+    chartData.push({
+        name: '',
+        y: emptyGauge,
+        color: '#eee',
+        dataLabels: {
+            enabled: false
+        }
+    });
 
     console.log(chartData);
 
