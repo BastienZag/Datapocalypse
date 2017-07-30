@@ -1,7 +1,19 @@
+/*Colour Scheme:
+black: #000000
+brightRed #c00000
+gold #ffc000
+orange #ff8a09
+grey #595959
+lightRed #ff4343
+lightYellow #ffe699
+lightOrange #f4b183
+*/
+
 body {
     padding-top: 0px;
     padding-bottom: 20px;
-    background-color: #293a46;
+    background-color: #000000;
+    /*background-color: #293a46;*/
 }
 
 
@@ -31,7 +43,8 @@ textarea {
 }
 
 .jumbotron {
-    background-color: #139fda;
+    /*background-color: #139fda;*/
+    background-color: #595959;
     color: #fff;
 }
 
@@ -40,7 +53,8 @@ textarea {
 }
 
 .subtitle {
-    color: rgb(217, 87, 17);
+    color: #000000;
+    /*color: rgb(217, 87, 17);*/
     font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     font-weight: bolder;
 }
@@ -66,6 +80,16 @@ textarea {
 
 /* hide survival-index until we have a number */
 
+.header {
+    background-color: #000000 !important;
+}
+
+.calculate {
+    color: #fff;
+    background-color: #c00000 !important;
+    border-color: #c00000 !important;
+}
+
 .info {
     color: #fff;
     padding: 20px;
@@ -76,18 +100,21 @@ textarea {
 }
 
 #zom>div {
-    background-color: #9F86FF;
+    /*background-color: #9F86FF;*/
+    background-color: #c00000;
     padding: 20px;
 }
 
 #fire>div {
-    background-color: #E64759;
+    background-color: #ffc000;
+    /*background-color: #E64759;*/
     color: #fff;
     padding: 20px;
 }
 
 #earth>div {
-    background-color: #1BC98E;
+    /*background-color: #1BC98E;*/
+    background-color: #ff8a09;
     color: #fff;
     padding: 20px;
 }
@@ -99,7 +126,8 @@ textarea {
 .survival-index {
     display: none;
     font-weight: bolder;
-    color: #1BC98E;
+    color: #c00000;
+    /*color: #1BC98E;*/
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
@@ -120,7 +148,8 @@ textarea {
 }
 
 .highcharts-background {
-    background-color: #293a46;
+    background-color: #000000
+    /*background-color: #293a46;*/
 }
 
 .survival-index-number {
@@ -143,10 +172,16 @@ textarea {
     padding-bottom: 30px;
 }
 
-.led{
-  font-size:  20px;
+.open-data-used {
+    margin: 50px auto;
+    color: white;
 }
 
+.led {
+    font-size: 20px;
+}
+
+<<<<<<< HEAD
 .title2{
 font-family: "Comic Sans","Comic Sans MS",cursive;
 font-style:italic;
@@ -160,4 +195,34 @@ font-size:24px;
 
 .indexdesc{
     color:#fff;
+=======
+.title2 {
+    font-family: "Comic Sans", "Comic Sans MS", cursive;
+    font-style: italic;
+    font-weight: bolder;
+    font-size: 22px;
+}
+
+.highcharts-background {
+    fill: #000;
+}
+
+.highcharts-button-box,
+.highcharts-button-symbol {
+    display: none;
+}
+
+.highcharts-label.highcharts-data-label {
+    display: none;
+}
+
+#datapocalypse .highcharts-title,
+#datapocalypse .highcharts-title tspan {
+    color: white !important;
+    fill: white !important;
+}
+
+a {
+    color: #ff8a09 !important;
+>>>>>>> b7c7cf2ca846b366c055b1bac5dd032420adc891
 }
