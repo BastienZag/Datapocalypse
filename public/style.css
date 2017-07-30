@@ -9,12 +9,11 @@ lightYellow #ffe699
 lightOrange #f4b183
 */
 
-
 body {
     padding-top: 0px;
     padding-bottom: 20px;
     background-color: #000000;
-    /*background-color: #293a46;*/ 
+    /*background-color: #293a46;*/
 }
 
 
@@ -80,6 +79,7 @@ textarea {
 
 
 /* hide survival-index until we have a number */
+
 .header {
     background-color: #000000 !important;
 }
@@ -88,9 +88,7 @@ textarea {
     color: #fff;
     background-color: #c00000 !important;
     border-color: #c00000 !important;
-
 }
-
 
 .info {
     color: #fff;
@@ -116,7 +114,7 @@ textarea {
 
 #earth>div {
     /*background-color: #1BC98E;*/
-    background-color:#ff8a09;
+    background-color: #ff8a09;
     color: #fff;
     padding: 20px;
 }
@@ -178,25 +176,33 @@ textarea {
     margin: 50px auto;
     color: white;
 }
-.led{
-  font-size:  20px;
+
+.led {
+    font-size: 20px;
 }
 
-.title2{
-font-family: "Comic Sans","Comic Sans MS",cursive;
-font-style:italic;
-font-weight:bolder;
-font-size:22px;
+.title2 {
+    font-family: "Comic Sans", "Comic Sans MS", cursive;
+    font-style: italic;
+    font-weight: bolder;
+    font-size: 22px;
 }
 
 .highcharts-background {
     fill: #000;
 }
 
-.highcharts-button-box, .highcharts-button-symbol {
+.highcharts-button-box,
+.highcharts-button-symbol {
     display: none;
 }
 
 .highcharts-label.highcharts-data-label {
     display: none;
+}
+
+#datapocalypse .highcharts-title,
+#datapocalypse .highcharts-title tspan {
+    color: white !important;
+    fill: white !important;
 }

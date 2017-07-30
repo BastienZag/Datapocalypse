@@ -92,12 +92,38 @@ function showHighchartData(data) {
     var chartData = [];
     var maxGauge = 0;
     var propertiesNumber = Object.keys(data.gauge).length;
+    var colors = ['#ff8a09', '#ffe699', '#c00000', '#ffc000', '#f4b183', '#000000'];
+    var grey = '#595959';
 
+    /*Colour Scheme:
+    black: #000000
+    brightRed #c00000
+    gold #ffc000
+    orange #ff8a09
+    grey #595959
+    lightRed çç
+    lightYellow #ffe699
+    lightOrange #f4b183
+    */
+
+    var i = 0;
     for (var property in data.gauge) {
         if (data.gauge.hasOwnProperty(property)) {
-            chartData.push([property, ((data.gauge[property] + 1) * 50) / propertiesNumber]);
+
+            // chartData.push([property, ((data.gauge[property] + 1) * 50) / propertiesNumber]);
+
+            chartData.push({
+                name: property,
+                y: (((data.gauge[property] + 1) * 50) / propertiesNumber),
+                color: colors[i],
+                dataLabels: {
+                    enabled: false
+                }
+            })
+
             maxGauge = maxGauge + ((data.gauge[property] + 1) * 50) / propertiesNumber;
         }
+        i++;
     }
 
     var emptyGauge = 100 - maxGauge;
@@ -109,7 +135,7 @@ function showHighchartData(data) {
     chartData.push({
         name: '',
         y: emptyGauge,
-        color: '#eee',
+        color: grey,
         dataLabels: {
             enabled: false
         }
