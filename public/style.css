@@ -142,3 +142,14 @@ textarea {
 .jumbotron-heading {
     padding-bottom: 30px;
 }
+
+.led{
+  font-size:  20px;
+}
+
+.title2{
+font-family: "Comic Sans","Comic Sans MS",cursive;
+font-style:italic;
+font-weight:bolder;
+font-size:22px;
+}
