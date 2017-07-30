@@ -107,6 +107,8 @@ function displayIndex(data) {
     if (parseInt(barVal)<=50)
     {
         $(".indexdesc").text("Your likehood of survival is small. You should consider moving to another area where it may be safer for you. ");
+          $('.survival-index-number').css('color','red');
+        $('.survival-index').css('color','red');
     }
 
     if ((parseInt(barVal)>50)&& (parseInt(barVal)<80))
