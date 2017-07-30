@@ -103,7 +103,7 @@ function displayIndex(data) {
 
     if (parseInt(barVal)<=50)
     {
-        $(".indexdesc").text("Your likehood of survival is small. You should consider moving to another area where it may be more safe for you. ");
+        $(".indexdesc").text("Your likehood of survival is small. You should consider moving to another area where it may be safer for you. ");
     }
 
     if ((parseInt(barVal)>50)&& (parseInt(barVal)<80))
