@@ -53,8 +53,8 @@ textarea {
 }
 
 .subtitle {
-    color: #000000;
-    /*color: rgb(217, 87, 17);*/
+    /*color: #000000;*/
+    color: rgb(217, 87, 17);
     font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     font-weight: bolder;
 }
@@ -181,7 +181,7 @@ textarea {
     font-size: 20px;
 }
 
-<<<<<<< HEAD
+
 .title2{
 font-family: "Comic Sans","Comic Sans MS",cursive;
 font-style:italic;
@@ -195,12 +195,7 @@ font-size:24px;
 
 .indexdesc{
     color:#fff;
-=======
-.title2 {
-    font-family: "Comic Sans", "Comic Sans MS", cursive;
-    font-style: italic;
-    font-weight: bolder;
-    font-size: 22px;
+
 }
 
 .highcharts-background {
@@ -224,5 +219,5 @@ font-size:24px;
 
 a {
     color: #ff8a09 !important;
->>>>>>> b7c7cf2ca846b366c055b1bac5dd032420adc891
+
 }
